@@ -14,6 +14,20 @@ const typeDefs = `
         getContacts: []
     }
 
+    input ContactInput {
+        id: ID
+        firstName: String
+        lastName: String
+        email: String
+        company: String 
+    }
+
+    type Mutation {
+        createContact(input: ContactInput)
+    }
 
 `
 
+const schema = makeExecutableSchema({ typeDefs, resolvers });
+
+export { schema };
