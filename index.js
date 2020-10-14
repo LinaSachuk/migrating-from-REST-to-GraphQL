@@ -1,11 +1,9 @@
 import express from 'express';
-
+// import graphqlHTTP from 'express-graphql';
+import { schema } from './src/data/schema';
 
 const app = express();
 const PORT = 8080;
-
-
-routes(app);
 
 // serving static files
 app.use(express.static('public'));
@@ -18,12 +16,10 @@ const { graphqlHTTP } = require('express-graphql');
 
 app.use('/graphql', graphqlHTTP({
     schema: schema,
-    rootValue: root,
     graphiql: true,
 }))
 
 
-
 app.listen(PORT, () =>
-    console.log(`your server is running on port ${PORT}/graphgl`)
+    console.log(`your server is running on localhost:${PORT}/graphql`)
 );

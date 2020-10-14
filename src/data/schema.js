@@ -1,17 +1,17 @@
 import { resolvers } from './resolvers';
 import { makeExecutableSchema } from 'graphql-tools';
 
-const typeDefs = ` 
+const typeDefs = `
     type Contact {
         id: ID
         firstName: String
         lastName: String
         email: String
-        company: String 
+        company: String
     }
 
     type Query {
-        getContacts: []
+        getContacts: [Contact]
     }
 
     input ContactInput {
@@ -19,15 +19,13 @@ const typeDefs = `
         firstName: String
         lastName: String
         email: String
-        company: String 
+        company: String
     }
 
     type Mutation {
-        createContact(input: ContactInput)
+        createContact(input: ContactInput): Contact
     }
-
 `
-
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 export { schema };
